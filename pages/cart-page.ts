@@ -4,7 +4,7 @@ import { step } from '../utilities/logging';
 import { CartLocators } from '../locators/cart-locators';
 import { Product } from '../models/product';
 import { Currency } from '../utilities/currency';
-import { AssertHelper } from '../tests/ui/assert-helper-page';
+import { AssertHelper } from './assert-helper-page';
 import { Assertions } from '../utilities/assertions';
 
 export class CartPage extends CartLocators {
@@ -60,11 +60,15 @@ export class CartPage extends CartLocators {
     return [];
   }
 
+  /**
+   * Verifies that a specific product has been added to the cart
+   * @param product The product to verify
+   */
   @step('Verifying that the product is added to the cart')
   async verifyProductAddedToCart(product: Product): Promise<void> {
     await this.assertHelper.assertElementVisible(this.rowProduct(product.name));
     await this.assertHelper.assertElementHasValue(this.inputQuantity(product.name), product.quantity.toString());
-    
+
     const totalText = await this.cellTotal(product.name).innerText();
     const actualTotal = Currency.parseCurrency(totalText);
     const expectedTotal = product.price * product.quantity;
@@ -132,7 +136,7 @@ export class CartPage extends CartLocators {
     const actualTotal = Currency.parseCurrency(totalText);
     const expectedTotal = product.price * product.quantity;
     Assertions.assertEqual(actualTotal, expectedTotal, `Expected updated total for ${product.name} to be ${expectedTotal}`);
-    
+
     await this.assertHelper.assertElementHasValue(this.inputQuantity(product.name), product.quantity.toString());
   }
 
