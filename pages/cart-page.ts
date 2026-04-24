@@ -69,7 +69,7 @@ export class CartPage extends CartLocators {
     await this.assertHelper.assertElementVisible(this.rowProduct(product.name));
     await this.assertHelper.assertElementHasValue(this.inputQuantity(product.name), product.quantity.toString());
 
-    const totalText = await this.cellTotal(product.name).innerText();
+    const totalText = await this.commonPage.innerText(this.cellTotal(product.name));
     const actualTotal = Currency.parseCurrency(totalText);
     const expectedTotal = product.price * product.quantity;
     Assertions.assertEqual(actualTotal, expectedTotal, `Expected total for ${product.name} to be ${expectedTotal}`);
@@ -81,7 +81,7 @@ export class CartPage extends CartLocators {
    */
   @step('Clicking the remove button for a specific product in the cart to remove it')
   async clickRemoveProduct(product: Product): Promise<void> {
-    await this.btnRemove(product.name).click();
+    await this.commonPage.click(this.btnRemove(product.name));
   }
 
   /**
@@ -89,11 +89,11 @@ export class CartPage extends CartLocators {
    */
   @step('Removing all products from the cart')
   async removeAllProducts(): Promise<void> {
-    let removeButtonsCount = await this.btnRemoveItems.count();
+    let removeButtonsCount = await this.commonPage.count(this.btnRemoveItems);
     while (removeButtonsCount > 0) {
-      await this.btnRemoveItems.first().click();
-      await this.page.waitForTimeout(1000);
-      removeButtonsCount = await this.btnRemoveItems.count();
+      await this.commonPage.click(this.btnRemoveItems.first());
+      await this.commonPage.waitForMillis(1000);
+      removeButtonsCount = await this.commonPage.count(this.btnRemoveItems);
     }
   }
 
@@ -112,8 +112,8 @@ export class CartPage extends CartLocators {
    */
   @step('Updating the quantity of a specific product in the cart by filling the quantity input and clicking the update button')
   async updateProductQuantity(product: Product): Promise<void> {
-    await this.inputQuantity(product.name).fill(product.quantity.toString());
-    await this.btnUpdate(product.name).click();
+    await this.commonPage.fill(this.inputQuantity(product.name), product.quantity.toString());
+    await this.commonPage.click(this.btnUpdate(product.name));
   }
 
   /**
@@ -132,7 +132,7 @@ export class CartPage extends CartLocators {
    */
   @step('Verifying updated product quantity and its total')
   async verifyUpdatedProductQuantity(product: Product): Promise<void> {
-    const totalText = await this.cellTotal(product.name).innerText();
+    const totalText = await this.commonPage.innerText(this.cellTotal(product.name));
     const actualTotal = Currency.parseCurrency(totalText);
     const expectedTotal = product.price * product.quantity;
     Assertions.assertEqual(actualTotal, expectedTotal, `Expected updated total for ${product.name} to be ${expectedTotal}`);

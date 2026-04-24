@@ -32,9 +32,7 @@ test.describe('Cart Tests', () => {
     await productPage.searchAndSelectProduct(product);
     await productPage.increaseQuantity(product);
     await productPage.clickAddToCart();
-    await productPage.verifyAddToCartSuccessMessage(
-      Messages.ADD_TO_CART_SUCCESS_MESSAGE,
-    );
+    await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
     await productPage.clickViewCartLink();
     await cartPage.verifyProductAddedToCart(product);
   });
@@ -43,9 +41,7 @@ test.describe('Cart Tests', () => {
     await productPage.commonPage.goto(Constants.BASE_URL);
     await productPage.searchAndSelectProduct(product);
     await productPage.clickAddToCart();
-    await productPage.verifyAddToCartSuccessMessage(
-      Messages.ADD_TO_CART_SUCCESS_MESSAGE,
-    );
+    await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
     await productPage.clickViewCartLink();
     await cartPage.clickRemoveProduct(product);
     await cartPage.verifyProductRemovedFromCart(product);
@@ -68,9 +64,7 @@ test.describe('Cart Tests', () => {
     await productPage.commonPage.goto(Constants.BASE_URL);
     await productPage.searchAndSelectProduct(product);
     await productPage.clickAddToCart();
-    await productPage.verifyAddToCartSuccessMessage(
-      Messages.ADD_TO_CART_SUCCESS_MESSAGE,
-    );
+    await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE,);
     await productPage.clickViewCartLink();
     const productWithZeroQty = { ...product, quantity: 0 };
     await cartPage.updateProductQuantity(productWithZeroQty);
