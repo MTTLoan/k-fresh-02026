@@ -9,7 +9,7 @@ on:
       environment:
         description: 'Environment to run tests against'
         required: true
-        default: 'all'
+        default: all
         type: choice
         options:
           - qa
@@ -24,9 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        env: ${{ github.event.inputs.environment == 'all'
-          && fromJSON('["qa","staging","uat","production"]')
-          || fromJSON(format('["{0}"]', github.event.inputs.environment || 'uat')) }}
+        env: [qa, staging, uat, production]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v5
@@ -39,6 +37,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
+      if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.environment == 'all' || github.event.inputs.environment == matrix.env }}
       run: |
         echo "Running tests against environment: $ENV"
         npx playwright test
