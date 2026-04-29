@@ -66,13 +66,19 @@ export class ProductPage extends ProductLocators {
     await this.commonPage.click(this.btnBuyNow);
     await expect(this.page).toHaveURL(/.*checkout\/checkout/, { timeout: Constants.TIMEOUTS.PAGE_EVENT_LOAD });
   }
+
+  /**
+   * Search and Navigate to Product Page via UI Navigation
+   * @param product The name of the product to search for (e.g., 'HP LP3065').
+   */
   @step('Search and Navigate to Product Page via UI Navigation')
   async searchAndSelectProduct(product: Product): Promise<void> {
-    await this.commonPage.fill(this.inputSearch.first(), product.name);
-    await this.commonPage.press(this.inputSearch.first(), 'Enter');
-    await this.page.waitForLoadState('domcontentloaded');
+    await this.commonPage.waitForVisible(this.inputProductSearch);
+    await this.commonPage.fill(this.inputProductSearch, product.name);
+    await this.commonPage.press(this.inputProductSearch, 'Enter');
+    await this.commonPage.waitForPageLoad();
     await this.commonPage.waitForVisible(this.firstProductImage);
     await this.commonPage.click(this.firstProductImage);
-    await this.page.waitForLoadState('domcontentloaded');
+    await this.commonPage.waitForPageLoad();
   }
 }

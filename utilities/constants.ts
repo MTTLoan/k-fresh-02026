@@ -19,8 +19,8 @@ export class Constants {
     PERFORM_LOADING: 2,
   };
 
-  static readonly WORKERS = Number(process.env.WORKERS ?? 2);
-  static readonly LOCAL_WORKERS = Number(process.env.LOCAL_WORKERS ?? 6);
+  static readonly WORKERS = Number(process.env.WORKERS ?? 4);
+  static readonly LOCAL_WORKERS = Number(process.env.LOCAL_WORKERS ?? 4);
 
   static readonly MAX_RETRY_ATTEMPTS = 2;
   static readonly DATA_FOLDER = '../data';
