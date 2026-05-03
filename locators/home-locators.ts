@@ -39,11 +39,11 @@ export class HomeLocators extends CommonLocators {
         this.btnMyAccount = this.page.getByRole('button', { name: /My account/i }).first();
         this.lnkRegister = this.page.getByRole('link', { name: 'Register' }).first();
         this.productLink = (productName: string) =>
-            this.page.locator(`h4 a[href*="route=product/product"]`, {
+            this.page.locator('h4 a[href*="route=product/product"]', {
                 hasText: productName,
             }).first();
         this.productCard = (productName: string) =>
-            this.page.locator(".product-thumb").filter({
+            this.page.locator('.product-thumb').filter({
                 has: this.productLink(productName),
             }).first();
         this.productName = {

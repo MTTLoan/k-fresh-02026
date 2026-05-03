@@ -41,7 +41,7 @@ test.describe('Register Tests', () => {
   });
 
   test('TC-003: Register with invalid email format', async ({ commonPage, registerPage }) => {
-    user.email = "invalid-email-format";
+    user.email = 'invalid-email-format';
     await registerPage.fillRegistrationForm(user);
     await registerPage.clickAgreeTermsCheckbox();
     await registerPage.submitRegistrationForm();

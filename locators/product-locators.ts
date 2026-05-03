@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { CommonLocators } from "./common-locators";
+import { Locator, Page } from '@playwright/test';
+import { CommonLocators } from './common-locators';
 
 export class ProductLocators extends CommonLocators {
   constructor(page: Page) {
@@ -72,7 +72,7 @@ export class ProductLocators extends CommonLocators {
 
   locatorInitialization(): void {
     super.locatorInitialization();
-    this.divSuccessAlert = this.page.getByRole("alert");
+    this.divSuccessAlert = this.page.getByRole('alert');
     this.firstProductImage = this.page
       .locator('//div[contains(@class, "product-layout")]//img')
       .first();
@@ -81,7 +81,7 @@ export class ProductLocators extends CommonLocators {
       .locator('(//input[@placeholder="Search For Products"])')
       .first();
     this.inputProductSearch = this.page.getByPlaceholder(/Search/i).first();
-    this.lblProductTitle = this.page.locator("h1").first();
+    this.lblProductTitle = this.page.locator('h1').first();
     this.lblProductPrice = this.page.locator('//h3[@data-update="price"]');
     this.lblStockStatus = this.page.locator(
       "//li[span='Availability:']/span[2]",
@@ -107,7 +107,7 @@ export class ProductLocators extends CommonLocators {
     this.btnDecreaseQuantity = this.page.locator(
       '(//button[@aria-label="Decrease quantity"])[2]',
     );
-    this.divSuccessAlert = this.page.getByRole("alert");
+    this.divSuccessAlert = this.page.getByRole('alert');
     this.productThumbnail = this.page.locator('//div[@class="product-thumb"]');
     this.productThumbnaiByName = (productName: string): Locator =>
       this.page.locator(
@@ -143,7 +143,7 @@ export class ProductLocators extends CommonLocators {
     );
     this.iconCompare = (productName: string): Locator =>
       this.productThumbnaiByName(productName).getByTitle(
-        "Compare this Product",
+        'Compare this Product',
       );
     this.btnAddWishlist = (productName: string): Locator =>
       this.productThumbnaiByName(productName).locator(
@@ -159,7 +159,7 @@ export class ProductLocators extends CommonLocators {
       );
     this.btnCompareByProductName = (productName: string): Locator =>
       this.productThumbnaiByName(productName).getByTitle(
-        "Compare this Product",
+        'Compare this Product',
       );
     this.btnNavigateToComparePage = (productName: string): Locator => {
       return this.page.locator(
