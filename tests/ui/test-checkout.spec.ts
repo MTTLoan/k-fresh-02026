@@ -1,10 +1,10 @@
-import { test } from '../../pages/base-page';
-import { generateUserProfile } from '../../data/checkout-data';
-import { Logger } from '../../utilities/logger';
-import { Constants } from '../../utilities/constants';
-import { UserProfile } from '../../models/user';
-import { Address } from '../../models/address';
-import { generateAddress } from '../../data/checkout-data';
+import { test } from '@pages/base-page';
+import { generateUserProfile } from '@data/checkout-data';
+import { Logger } from '@utilities/logger';
+import { Constants } from '@utilities/constants';
+import { UserProfile } from '@models/user';
+import { Address } from '@models/address';
+import { generateAddress } from '@data/checkout-data';
 
 // Set the global timeout for all test cases within this specific test suite
 test.setTimeout(Constants.TIMEOUTS.DEFAULT);

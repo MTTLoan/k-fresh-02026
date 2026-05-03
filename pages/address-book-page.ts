@@ -1,4 +1,3 @@
-import { Page } from '@playwright/test';
 import { expect, Page } from '@playwright/test';
 import { AddressBookLocators } from '../locators/address-book-locators';
 import { Address } from '../models/address';
@@ -29,7 +28,7 @@ export class AddressBookPage extends AddressBookLocators {
    */
   @step('Clicking New Address button')
   async clickNewAddress(): Promise<void> {
-    await this.commonPage.click(this.btnAddNew);
+    await this.commonPage.click(this.btnNewAddress);
   }
 
   /**

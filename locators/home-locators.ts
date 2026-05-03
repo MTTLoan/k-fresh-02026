@@ -27,7 +27,7 @@ export class HomeLocators extends CommonLocators {
     lnkRegister!: Locator;
     ddlMyAccount!: Locator;
     lnkMyAccountLogin!: Locator;
-    locatorInitialization() {
+    locatorInitialization(): void {
         super.locatorInitialization();
         this.iconWishList = this.page.locator("//a[@aria-label='Wishlist']");
         this.btnWishlistInToast = this.page.locator("(//div[@id='notification-box-top']//a[contains(@href,'wishlist')])[2]");

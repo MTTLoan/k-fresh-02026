@@ -21,6 +21,14 @@ export class ProfilePage extends ProfileLocators {
   }
 
   /**
+   * Navigates to My Account page.
+   */
+  @step('Click My Account button')
+  async clickMyAccountBtn(): Promise<void> {
+    await this.commonPage.click(this.btnMyAccount);
+  }
+
+  /**
    * Verifies My Account page URL and heading.
    */
   @step('Verify My Account page is displayed')
@@ -52,7 +60,7 @@ export class ProfilePage extends ProfileLocators {
     await this.commonPage.fill(this.inputFirstName, profileData.firstName);
     await this.commonPage.fill(this.inputLastName, profileData.lastName);
     await this.commonPage.fill(this.inputUpdateEmail, profileData.email);
-    await this.commonPage.fill(this.inputTelephone, profileData.phone);
+    await this.commonPage.fill(this.inputTelephone, profileData.telephone);
     await this.commonPage.click(this.btnContinue);
   }
 
@@ -79,18 +87,9 @@ export class ProfilePage extends ProfileLocators {
     );
     await this.assertHelper.assertElementHasValue(
       this.inputTelephone,
-      expectedProfileData.phone,
+      expectedProfileData.telephone,
       'Phone',
     );
-  }
-
-  /**
-   * Updates the user's configuration settings with the provided data.
-   * @param settingsData - An object containing the configuration settings to be updated.
-   */
-  @step('Update Configuration Settings')
-  async updateConfigurationSettings(settingsData: unknown): Promise<void> {
-    // TODO: Implement when configuration settings locators/data are ready.
   }
 
   /**
@@ -109,7 +108,7 @@ export class ProfilePage extends ProfileLocators {
   async updateAccountInformation(data: UserProfile): Promise<void> {
     await this.commonPage.fill(this.inputFirstName, data.firstName);
     await this.commonPage.fill(this.inputLastName, data.lastName);
-    await this.commonPage.fill(this.inputTelephone, data.phone);
+    await this.commonPage.fill(this.inputTelephone, data.telephone);
     await this.commonPage.click(this.btnContinue);
   }
 
@@ -129,11 +128,11 @@ export class ProfilePage extends ProfileLocators {
    * Reads values from Edit Account form for data persistence validation.
    */
   @step('Get values from Edit Account form')
-  async getEditAccountValues(): Promise<Pick<UserProfile, 'firstName' | 'lastName' | 'phone'>> {
+  async getEditAccountValues(): Promise<Pick<UserProfile, 'firstName' | 'lastName' | 'telephone'>> {
     return {
       firstName: await this.inputFirstName.inputValue(),
       lastName: await this.inputLastName.inputValue(),
-      phone: await this.inputTelephone.inputValue(),
+      telephone: await this.inputTelephone.inputValue(),
     };
   }
 
@@ -156,8 +155,8 @@ export class ProfilePage extends ProfileLocators {
       'Last name is not persisted correctly',
     );
     Assertions.assertEqual(
-      actualData.phone,
-      expectedData.phone,
+      actualData.telephone,
+      expectedData.telephone,
       'Phone is not persisted correctly',
     );
   }
@@ -425,4 +424,3 @@ export class ProfilePage extends ProfileLocators {
       'Logout redirect');
   }
 }
-

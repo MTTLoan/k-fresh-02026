@@ -68,6 +68,8 @@ export class HomePage extends HomeLocators {
   @step('Hover over product and click Add to Cart')
   async hoverAndAddToCart(productName: string): Promise<void> {
     const productCard = this.productCard(productName);
+    await this.assertHelper.assertElementVisible(productCard);
+    await productCard.scrollIntoViewIfNeeded();
     await this.commonPage.hover(productCard);
     await this.commonPage.click(this.getAddToCartButton(productName));
   }

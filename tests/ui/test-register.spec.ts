@@ -1,11 +1,10 @@
-import { test } from '../../pages/base-page';
-import { Constants } from '../../utilities/constants';
-import { Assertions } from '../../utilities/assertions';
-import { Messages } from '../../data/messages.data';
-import { UserProfile } from '../../models/user';
-import { generateUserProfileData } from '../../data/user-data';
-import { AssertHelper } from '../../pages/assert-helper-page';
-
+import { test } from '@pages/base-page';
+import { Constants } from '@utilities/constants';
+import { Assertions } from '@utilities/assertions';
+import { Messages } from '@data/messages.data';
+import { UserProfile } from '@models/user';
+import { generateUserProfileData } from '@data/user-data';
+import { AssertHelper } from '@pages/assert-helper-page';
 
 let user: UserProfile;
 const assertHelper = new AssertHelper();

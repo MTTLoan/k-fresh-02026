@@ -42,8 +42,6 @@ export class CartPage extends CartLocators {
   @step('Update Quantity')
   async updateQuantity(quantity: number, productName: string): Promise<void> {
     await this.inputQuantity(productName).fill(quantity.toString());
-    await this.commonPage.click(this.roleButtonName('Checkout'));
-
   }
 
   /**
@@ -94,7 +92,7 @@ export class CartPage extends CartLocators {
     await this.assertHelper.assertElementVisible(this.miniCartDrawer);
     await this.commonPage.click(this.roleLinkName('View Cart', false));
   }
-  
+
   /**
    * Removes all products from the cart if any exist
    */
