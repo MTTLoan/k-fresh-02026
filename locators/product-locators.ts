@@ -83,9 +83,7 @@ export class ProductLocators extends CommonLocators {
     this.inputProductSearch = this.page.getByPlaceholder(/Search/i).first();
     this.lblProductTitle = this.page.locator('h1').first();
     this.lblProductPrice = this.page.locator('//h3[@data-update="price"]');
-    this.lblStockStatus = this.page.locator(
-      "//li[span='Availability:']/span[2]",
-    );
+    this.lblStockStatus = this.page.locator('//li[span="Availability:"]/span[2]');
     this.imgMainProduct = this.page
       .locator('//div[@class="image-thumb d-flex"]//a//img')
       .first();
