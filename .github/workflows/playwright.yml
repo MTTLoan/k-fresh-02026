@@ -49,20 +49,20 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.environment == 'all' || github.event.inputs.environment == matrix.env }}
-        run: |
-          echo "Running tests against environment: $ENV"
-          echo "Running test type: $TEST_TYPE"
+      run: |
+        echo "Running tests against environment: $ENV"
+        echo "Running test type: $TEST_TYPE"
 
-          if [ "$TEST_TYPE" = "all" ]; then
-            npx playwright test
-          else
-            npx playwright test --grep "@$TEST_TYPE"
-          fi
-        env:
-          HEADLESS: true
-          CI: true
-          ENV: ${{ matrix.env }}
-          TEST_TYPE: ${{ github.event.inputs.test_type || 'all' }}
+        if [ "$TEST_TYPE" = "all" ]; then
+          npx playwright test
+        else
+          npx playwright test --grep "@$TEST_TYPE"
+        fi
+      env:
+        HEADLESS: true
+        CI: true
+        ENV: ${{ matrix.env }}
+        TEST_TYPE: ${{ github.event.inputs.test_type || 'all' }}
     - uses: actions/upload-artifact@v5
       if: ${{ !cancelled() }}
       with:
