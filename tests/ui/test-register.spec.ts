@@ -40,7 +40,7 @@ test.describe('Register Tests', () => {
     await registerPage.verifyRequiredFieldsErrorMessages();
   });
 
-  test('TC-003: Register with invalid email format', async ({ commonPage, registerPage }) => {
+  test('TC-003: Register with invalid email format', async ({ commonPage, registerPage, browserName }) => {
     user.email = 'invalid-email-format';
     await registerPage.fillRegistrationForm(user);
     await registerPage.clickAgreeTermsCheckbox();
@@ -51,7 +51,14 @@ test.describe('Register Tests', () => {
     const emailValue = await registerPage.inputEmail.inputValue();
     const validationMessage = await registerPage.getInputValidationMessage(registerPage.inputEmail);
 
-    Assertions.assertEqual(validationMessage, `Please include an '@' in the email address. '${emailValue}' is missing an '@'.`);
+    let expectedMessage = `Please include an '@' in the email address. '${emailValue}' is missing an '@'.`;
+    if (browserName === 'firefox') {
+      expectedMessage = 'Please enter an email address.';
+    } else if (browserName === 'webkit') {
+      expectedMessage = 'Enter an email address';
+    }
+
+    Assertions.assertEqual(validationMessage, expectedMessage);
   });
 
   test('TC-004: Register with password mismatch', async ({ registerPage }) => {
