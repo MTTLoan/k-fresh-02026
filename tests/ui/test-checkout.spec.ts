@@ -1,10 +1,10 @@
-import { test } from '../../pages/base-page';
-import { generateUserProfile } from '../../data/checkout-data';
-import { Logger } from '../../utilities/logger';
-import { Constants } from '../../utilities/constants';
-import { UserProfile } from '../../models/user';
-import { Address } from '../../models/address';
-import { generateAddress } from '../../data/checkout-data';
+import { test } from '@pages/base-page';
+import { generateUserProfile } from '@data/checkout-data';
+import { Logger } from '@utilities/logger';
+import { Constants } from '@utilities/constants';
+import { UserProfile } from '@models/user';
+import { Address } from '@models/address';
+import { generateAddress } from '@data/checkout-data';
 
 // Set the global timeout for all test cases within this specific test suite
 test.setTimeout(Constants.TIMEOUTS.DEFAULT);
@@ -47,7 +47,7 @@ test.describe('Checkout Tests', () => {
     await productPage.buySpecificItemNow(targetProduct);
   });
 
-  test('TC_CHK_001: Verify successful checkout using a different shipping address', async ({ checkoutPage }) => {
+  test('TC_CHK_001: Verify successful checkout using a different shipping address @smoke @regression', async ({ checkoutPage }) => {
     await checkoutPage.fillBillingDetails(buyerProfile, buyerAddress);
     await checkoutPage.verifyShippingSectionVisible();
     await checkoutPage.fillShippingDetails(receiverProfile, receiverAddress);
@@ -56,7 +56,7 @@ test.describe('Checkout Tests', () => {
     await checkoutPage.confirmOrderAndVerifySuccess();
   });
 
-  test('TC_CHK_002: Verify checkout recovers successfully when toggling shipping address states', async ({ checkoutPage }) => {
+  test('TC_CHK_002: Verify checkout recovers successfully when toggling shipping address states @regression', async ({ checkoutPage }) => {
     await checkoutPage.fillBillingDetails(buyerProfile, buyerAddress);
     await checkoutPage.verifyShippingSectionVisible();
     await checkoutPage.setTermsAndConditions();
@@ -67,7 +67,7 @@ test.describe('Checkout Tests', () => {
     await checkoutPage.confirmOrderAndVerifySuccess();
   });
 
-  test('TC_CHK_003: Mandatory Terms Check - Verify error when Terms & Conditions are not accepted', async ({ checkoutPage }) => {
+  test('TC_CHK_003: Mandatory Terms Check - Verify error when Terms & Conditions are not accepted @regression', async ({ checkoutPage }) => {
     await checkoutPage.fillBillingDetails(buyerProfile, buyerAddress);
     await checkoutPage.setTermsAndConditions(false);
     await checkoutPage.clickContinueButton();

@@ -27,7 +27,7 @@ export class HomeLocators extends CommonLocators {
     lnkRegister!: Locator;
     ddlMyAccount!: Locator;
     lnkMyAccountLogin!: Locator;
-    locatorInitialization() {
+    locatorInitialization(): void {
         super.locatorInitialization();
         this.iconWishList = this.page.locator("//a[@aria-label='Wishlist']");
         this.btnWishlistInToast = this.page.locator("(//div[@id='notification-box-top']//a[contains(@href,'wishlist')])[2]");
@@ -39,11 +39,11 @@ export class HomeLocators extends CommonLocators {
         this.btnMyAccount = this.page.getByRole('button', { name: /My account/i }).first();
         this.lnkRegister = this.page.getByRole('link', { name: 'Register' }).first();
         this.productLink = (productName: string) =>
-            this.page.locator(`h4 a[href*="route=product/product"]`, {
+            this.page.locator('h4 a[href*="route=product/product"]', {
                 hasText: productName,
             }).first();
         this.productCard = (productName: string) =>
-            this.page.locator(".product-thumb").filter({
+            this.page.locator('.product-thumb').filter({
                 has: this.productLink(productName),
             }).first();
         this.productName = {

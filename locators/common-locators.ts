@@ -1,7 +1,7 @@
 import { FrameLocator, Locator, Page } from '@playwright/test';
 export class CommonLocators {
-    locatorsInitialization() {
-      this.locatorInitialization();
+    locatorsInitialization(): void {
+        this.locatorInitialization();
     }
     page: Page;
 
@@ -52,12 +52,12 @@ export class CommonLocators {
         this.Iframe4 = this.page.frameLocator(this.iframe4);
         this.btnSave = this.page.locator('button:has-text("Save")');
         this.btnCancel = this.page.locator('button:has-text("Cancel")');
-        this.btnEdit = this.page.locator('button:has-text("Edit")');
+        this.btnEdit = this.page.locator('//a[text()="Edit"]');
         this.btnDelete = this.page.locator('button:has-text("Delete")');
         this.btnAddNew = this.page.locator('button:has-text("Add New")');
         this.btnSubmit = this.page.locator('//input[@type="submit"]');
         this.btnContinue = this.page.locator('//a[contains(@class, "btn") and contains(., "Continue")] | //input[@value="Continue"]');
-        this.btnConfirmDelete = this.page.locator('button:has-text("Confirm Delete")');
+        this.btnConfirmDelete = this.page.locator('button:has-text("Confirm Delete") | //a[text()="Confirm Delete"]');
         this.btnCancelDelete = this.page.locator('button:has-text("Cancel Delete")');
         this.inputSearch = this.page.locator('input[placeholder="Search"]');
         this.ddlOption = this.page.locator('ul[role="listbox"]');

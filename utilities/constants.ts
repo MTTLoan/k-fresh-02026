@@ -31,6 +31,7 @@ export class Constants {
 
   static readonly ENV = process.env.ENV ?? 'qa';
   static readonly BASE_URL = process.env.BASE_URL ?? 'https://ecommerce-playground.lambdatest.io/';
+  static readonly BASE_API_URL = process.env.BASE_API_URL ?? 'https://ecommerce-playground.lambdatest.io/';
   static readonly LOGIN_URL = `${Constants.BASE_URL}/index.php?route=account/login`;
   static readonly REGISTER_URL = `${Constants.BASE_URL}/index.php?route=account/register`;
   static readonly SECURE_URL = `${Constants.BASE_URL}/secure`;

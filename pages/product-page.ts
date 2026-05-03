@@ -1,11 +1,11 @@
-import { Page } from '@playwright/test';
+import { expect, Page, test } from '@playwright/test';
 import { CommonPage } from './common-page';
 import { step } from '@utilities/logging';
 import { ProductLocators } from '@locators/product-locators';
 import { Product } from '@models/product';
 import { AssertHelper } from './assert-helper-page';
-import { Product } from '../models/product';
 import { ActionType } from '../models/action-type';
+import { Constants } from '@utilities/constants';
 
 export class ProductPage extends ProductLocators {
   commonPage: CommonPage;
@@ -120,7 +120,7 @@ export class ProductPage extends ProductLocators {
       await this.assertHelper.assertElementVisible(this.inputQuantity);
       //check initial quantity is a valid number and greater than 0
       const quantity = await this.commonPage.getAttribute(this.inputQuantity, 'value');
-      await this.assertHelper.assertNumberGreaterThanOrEqual(parseInt(quantity), 1);
+      this.assertHelper.assertNumberGreaterThanOrEqual(Number.parseInt(quantity), 1);
     });
   }
 
@@ -251,7 +251,7 @@ export class ProductPage extends ProductLocators {
         btnAction = this.btnAddWishlist(productName);
         break;
       case ActionType.COMPARE:
-        btnAction = this.btnCompare(productName);
+        btnAction = this.btnCompareByProductName(productName);
         break;
       case ActionType.QUICK_VIEW:
         btnAction = this.btnQuickView(productName);
@@ -276,11 +276,11 @@ export class ProductPage extends ProductLocators {
       await this.performActionOnProduct(product, ActionType.COMPARE);
       await this.commonPage.waitForVisible(this.toastMessage(product.name));
     }
-   *  Clicks the "Inquiry" button for the specified product.
-   * @param productName
+  }
+
+  /**
+   * Clicks the "Add to Cart" button to add the product to the cart.
    */
-  @step('Click Inquiry Button')
-  async clickInqueryButton(productName: string): Promise<void> { }
   @step('Clicking the add to cart button to add the product to the cart')
   async clickAddToCart(): Promise<void> {
     await this.commonPage.roleButtonName('Add to Cart').click({ force: true });
@@ -309,7 +309,7 @@ export class ProductPage extends ProductLocators {
     await this.assertHelper.assertElementVisible(this.divSuccessAlert);
     await this.commonPage.click(this.roleLinkName('View Cart', false));
   }
-  
+
   /**
      * Sets the quantity of the product to be added to the cart.
      * @param qty 
@@ -318,7 +318,7 @@ export class ProductPage extends ProductLocators {
   async setQuantity(qty: number): Promise<void> {
     await this.commonPage.fill(this.inputQuantity, qty.toString());
   }
- 
+
   /**
   * Adds an item to the cart using standard UI navigation (Search -> Product Detail -> Add to Cart).
   * @param searchTerm The name of the product to search for (e.g., 'HP LP3065').
@@ -355,6 +355,9 @@ export class ProductPage extends ProductLocators {
     const btnNavigate = this.btnNavigateToComparePage(productName);
     await this.commonPage.waitForVisible(btnNavigate);
     await this.commonPage.click(btnNavigate);
+  }
+
+  /**
    * Search and Navigate to Product Page via UI Navigation
    * @param product The name of the product to search for (e.g., 'HP LP3065').
    */

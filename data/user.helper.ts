@@ -19,11 +19,11 @@ const DEFAULT_ADDRESS_OPTIONS: DefaultAddressOption[] = ['yes', 'no'];
 /**
  * Creates random but valid profile data for account update test.
  */
-export function createUpdateProfileData(): Pick<UserProfile, 'firstName' | 'lastName' | 'phone'> {
+export function createUpdateProfileData(): Pick<UserProfile, 'firstName' | 'lastName' | 'telephone'> {
   return {
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
-    phone: faker.string.numeric(10),
+    telephone: faker.string.numeric(10),
   };
 }
 /**
@@ -61,6 +61,7 @@ export function createAddressData(): Address {
     country,
     region,
     defaultAddress: faker.helpers.arrayElement(DEFAULT_ADDRESS_OPTIONS),
+    street: faker.location.streetAddress(),
   };
 }
 
@@ -75,7 +76,7 @@ export function createRegisterData(): UserProfile {
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: `qa.auto.${uniqueId}@example.com`,
-    phone: faker.string.numeric(10),
+    telephone: faker.string.numeric(10),
     password,
   };
 }

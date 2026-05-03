@@ -796,6 +796,9 @@ export class CommonPage extends CommonLocators {
             // Wait for DOM to load
             await this.page.waitForLoadState('domcontentloaded');
         }
+    }
+
+    /**
      * Get Current URL
      * @returns
      */
