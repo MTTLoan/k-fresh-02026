@@ -11,6 +11,7 @@ import { ProductPage } from './product-page';
 import { ProfilePage } from './profile-page';
 import { RegisterPage } from './register-page';
 import { WishListPage } from './wish-list-page';
+import { APIPage } from './api/api-page';
 
 export const test = baseTest.extend<{
     loginPage: LoginPage;
@@ -25,6 +26,7 @@ export const test = baseTest.extend<{
     profilePage: ProfilePage;
     registerPage: RegisterPage;
     wishlistPage: WishListPage;
+    apiPage: APIPage;
 }>({
     loginPage: async ({ page, context }, use) => {
         const instance = new LoginPage(page);
@@ -108,6 +110,10 @@ export const test = baseTest.extend<{
         context.on('page', (newPage: Page) => {
             instance.setPage(newPage);
         });
+        await use(instance);
+    },
+    apiPage: async ({ request }, use) => {
+        const instance = new APIPage(request);
         await use(instance);
     },
 });

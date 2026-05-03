@@ -156,4 +156,21 @@ export class CartPage extends CartLocators {
     Assertions.assertEqual(actualTotal, expectedTotal, `Expected updated total for ${product.name} to be ${expectedTotal}`);
     await this.assertHelper.assertElementHasValue(this.inputQuantity(product.name), product.quantity.toString());
   }
+
+  /**
+   * Gets the product key for a specific product name from the cart using the remove button's onclick attribute.
+   * @param productName - The name of the product.
+   * @returns The product key.
+   */
+  @step('Get Product Key by Name')
+  async getProductKey(productName: string): Promise<string> {
+    const onclick = await this.btnRemove(productName).getAttribute('onclick');
+    if (onclick) {
+      const match = onclick.match(/cart\.remove\('([^']+)'\)/);
+      if (match) {
+        return match[1];
+      }
+    }
+    throw new Error(`Could not find product key for product: ${productName}`);
+  }
 }
