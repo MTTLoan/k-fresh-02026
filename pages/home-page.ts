@@ -36,6 +36,9 @@ export class HomePage extends HomeLocators {
   async selectMenu(menuName: string): Promise<void> {
     await this.commonPage.click(this.menuLink(menuName));
     await this.page.waitForLoadState('networkidle');
+    await this.commonPage.click(this.shopByCategoryMenu);
+    await this.commonPage.waitForVisible(this.itemTopCategory(menuName));
+    await this.commonPage.click(this.itemTopCategory(menuName));
   }
 
   /**

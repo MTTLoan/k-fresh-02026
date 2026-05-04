@@ -8,10 +8,8 @@ export const generateAddressData = (): Address => {
     company: faker.company.name(),
     address1: faker.location.streetAddress(),
     address2: faker.location.secondaryAddress(),
-
     city: faker.location.city(),
     postCode: faker.location.zipCode(),
-
     country: 'United States',
     region: 'California',
   };

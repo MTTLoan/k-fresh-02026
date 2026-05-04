@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test';
-import { CommonLocators } from './common-locators';
+import { CommonLocators } from '@locators/common-locators';
 
 export class HomeLocators extends CommonLocators {
     constructor(page: Page) {
@@ -7,6 +7,8 @@ export class HomeLocators extends CommonLocators {
         this.locatorInitialization();
     }
 
+    shopByCategoryMenu!: Locator;
+    itemTopCategory!: (itemName: string) => Locator;
     iconWishList!: Locator;
     divSuccessAlert!: Locator;
     spanSuccessAlertMessage!: Locator;
