@@ -78,5 +78,4 @@ test.describe('Register Tests', () => {
     // Verify top alert message for privacy policy
     Assertions.assertEqual((await registerPage.lblErrorAgree.textContent())?.trim(), Messages.REGISTER_ERROR_PRIVACY_POLICY);
   });
-
 });

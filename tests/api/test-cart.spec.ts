@@ -68,7 +68,11 @@ test.describe('Cart API Module - Comprehensive Testing', () => {
     const startTime = Date.now();
     const response = await apiPage.apiPostRequest('index.php?route=checkout/cart/edit', undefined, {
       form: {
-        [`quantity[${cartItemKey}]`]: updatedQuantity,
+        key: cartItemKey,
+        quantity: updatedQuantity,
+      },
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
       }
     });
     const responseTime = Date.now() - startTime;

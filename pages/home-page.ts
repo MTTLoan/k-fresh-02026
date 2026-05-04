@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
+import { Constants } from '@utilities/constants';
 import { CommonPage } from '@pages/common-page';
 import { step } from '@utilities/logging';
 import { HomeLocators } from '@locators/home-locators';
 import { AssertHelper } from '@pages/assert-helper-page';
 import { Assertions } from '@utilities/assertions';
-import { Constants } from '@utilities/constants';
 
 export class HomePage extends HomeLocators {
   commonPage: CommonPage;

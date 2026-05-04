@@ -4,7 +4,7 @@ import { CommonLocators } from '@locators/common-locators';
 export class ProductLocators extends CommonLocators {
   constructor(page: Page) {
     super(page);
-    this.locatorsInitialization();
+    this.locatorInitialization();
   }
 
   // Product detail locators

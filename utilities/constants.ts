@@ -47,5 +47,4 @@ export class Constants {
     DOM_CONTENT_LOADED: 'domcontentloaded',
     LOAD: 'load',
   } as const;
-
 }

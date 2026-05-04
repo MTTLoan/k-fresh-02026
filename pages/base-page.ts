@@ -12,6 +12,7 @@ import { ProfilePage } from './profile-page';
 import { RegisterPage } from './register-page';
 import { WishListPage } from './wish-list-page';
 import { APIPage } from './api/api-page';
+import { AssertHelper } from './assert-helper-page';
 
 export const test = baseTest.extend<{
     loginPage: LoginPage;
@@ -27,6 +28,7 @@ export const test = baseTest.extend<{
     registerPage: RegisterPage;
     wishlistPage: WishListPage;
     apiPage: APIPage;
+    assertHelper: AssertHelper;
 }>({
     loginPage: async ({ page, context }, use) => {
         const instance = new LoginPage(page);
@@ -114,6 +116,10 @@ export const test = baseTest.extend<{
     },
     apiPage: async ({ request }, use) => {
         const instance = new APIPage(request);
+        await use(instance);
+    },
+    assertHelper: async ({ }, use) => {
+        const instance = new AssertHelper();
         await use(instance);
     },
 });
