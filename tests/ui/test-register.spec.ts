@@ -10,7 +10,6 @@ let user: UserProfile;
 const assertHelper = new AssertHelper();
 
 test.describe('Register Tests', () => {
-
   test.beforeEach(async ({ commonPage }) => {
     await commonPage.goto(Constants.REGISTER_URL);
     user = generateUserProfileData();
@@ -78,5 +77,4 @@ test.describe('Register Tests', () => {
     // Verify top alert message for privacy policy
     Assertions.assertEqual((await registerPage.lblErrorAgree.textContent())?.trim(), Messages.REGISTER_ERROR_PRIVACY_POLICY);
   });
-
 });

@@ -71,47 +71,47 @@ test.describe('Cart Tests', () => {
     await cartPage.updateProductQuantity(productWithZeroQty);
     await cartPage.verifyProductRemovedFromCart(product);
   });
-  
+
   /** Test case Add-to-Cart of PThao */
   test('TC_CART_01 - Add product to cart @regression', async ({ homePage, productPage, cartPage }) => {
-      await homePage.commonPage.goto(Constants.BASE_URL);
-      await homePage.selectProduct(product.name);
-      await productPage.clickAddToCart();
-      await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
-      await cartPage.clickViewCartLink();
-      await cartPage.verifyProductAddedToCart(product);
+    await homePage.commonPage.goto(Constants.BASE_URL);
+    await homePage.selectProduct(product.name);
+    await productPage.clickAddToCart();
+    await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
+    await cartPage.clickViewCartLink();
+    await cartPage.verifyProductAddedToCart(product);
   });
 
   test('TC_CART_02 - Add product with multiple quantity successfully @regression', async ({ homePage, productPage, cartPage }) => {
-      await homePage.commonPage.goto(Constants.BASE_URL);
-      await homePage.selectProduct(product.name);
-      await productPage.setQuantity(3);
-      await productPage.clickAddToCart();
-      await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
-      await cartPage.clickViewCartLink();
-      await cartPage.verifyUpdatedProductQuantity({ ...product, quantity: 3 });
+    await homePage.commonPage.goto(Constants.BASE_URL);
+    await homePage.selectProduct(product.name);
+    await productPage.setQuantity(3);
+    await productPage.clickAddToCart();
+    await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
+    await cartPage.clickViewCartLink();
+    await cartPage.verifyUpdatedProductQuantity({ ...product, quantity: 3 });
   });
 
   test('TC_CART_03 - Add product to cart from homepage @regression', async ({ homePage, productPage, cartPage }) => {
-      await homePage.commonPage.goto(Constants.BASE_URL);
-      await homePage.hoverAndAddToCart(product.name);
-      await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
-      await productPage.clickViewCartLink();
-      await cartPage.verifyProductAddedToCart(product);
+    await homePage.commonPage.goto(Constants.BASE_URL);
+    await homePage.hoverAndAddToCart(product.name);
+    await productPage.verifyAddToCartSuccessMessage(Messages.ADD_TO_CART_SUCCESS_MESSAGE);
+    await productPage.clickViewCartLink();
+    await cartPage.verifyProductAddedToCart(product);
   });
 
   test('TC_CART_04 - Update product quantity in cart successfully @regression', async ({ homePage, productPage, cartPage }) => {
-      await homePage.commonPage.goto(Constants.BASE_URL);
-      await homePage.selectProduct(product.name);
-      await productPage.clickAddToCart();
-      await productPage.verifyAddToCartSuccessMessage(
-        Messages.ADD_TO_CART_SUCCESS_MESSAGE,
-      );
-      await productPage.clickViewCartLink();
-      await cartPage.verifyProductAddedToCart(product);
-      await cartPage.updateQuantity(2, product.name);
-      await cartPage.clickUpdateQuantity(product.name);
-      await cartPage.verifyCartModifiedSuccessMessage(Messages.UPDATE_CART_SUCCESS_MESSAGE);
-      await cartPage.verifyUpdatedProductQuantity({ ...product, quantity: 2 });
+    await homePage.commonPage.goto(Constants.BASE_URL);
+    await homePage.selectProduct(product.name);
+    await productPage.clickAddToCart();
+    await productPage.verifyAddToCartSuccessMessage(
+      Messages.ADD_TO_CART_SUCCESS_MESSAGE,
+    );
+    await productPage.clickViewCartLink();
+    await cartPage.verifyProductAddedToCart(product);
+    await cartPage.updateQuantity(2, product.name);
+    await cartPage.clickUpdateQuantity(product.name);
+    await cartPage.verifyCartModifiedSuccessMessage(Messages.UPDATE_CART_SUCCESS_MESSAGE);
+    await cartPage.verifyUpdatedProductQuantity({ ...product, quantity: 2 });
   });
 });

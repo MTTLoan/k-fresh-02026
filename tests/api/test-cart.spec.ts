@@ -1,16 +1,14 @@
-import { test } from '../../pages/base-page';
-import { Product } from '../../models/product';
-import { getEnvProduct } from '../../data/product.helper';
-import { Assertions } from '../../utilities/assertions';
-import { AssertHelper } from '../../pages/assert-helper-page';
-import { Messages } from '../../data/messages.data';
+import { test } from '@pages/base-page';
+import { Product } from '@models/product';
+import { getEnvProduct } from '@data/product.helper';
+import { Assertions } from '@utilities/assertions';
+import { Messages } from '@data/messages.data';
 
 const product: Product = getEnvProduct();
-const assertHelper = new AssertHelper();
 
 test.describe('Cart API Module', () => {
 
-  test('TC01 - Add product to cart', async ({ apiPage }) => {
+  test('TC01 - Add product to cart', async ({ apiPage, assertHelper }) => {
     const response = await apiPage.apiPostRequest('index.php?route=checkout/cart/add', undefined, {
       form: {
         product_id: product.id,
@@ -28,7 +26,7 @@ test.describe('Cart API Module', () => {
     );
   });
 
-  test('TC02 - Update product quantity in cart', async ({ apiPage, cartPage }) => {
+  test('TC02 - Update product quantity in cart', async ({ apiPage, cartPage, assertHelper }) => {
     const updatedQuantity = 3;
     await apiPage.apiPostRequest('index.php?route=checkout/cart/add', undefined, {
       form: {
@@ -49,7 +47,7 @@ test.describe('Cart API Module', () => {
     await assertHelper.assertResponseOK(response);
   });
 
-  test('TC03 - Remove product from cart', async ({ apiPage, cartPage }) => {
+  test('TC03 - Remove product from cart', async ({ apiPage, cartPage, assertHelper }) => {
     await apiPage.apiPostRequest('index.php?route=checkout/cart/add', undefined, {
       form: {
         product_id: product.id,

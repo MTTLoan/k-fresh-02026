@@ -1,12 +1,15 @@
 import { Locator, Page } from '@playwright/test';
-import { CommonLocators } from './common-locators';
+import { CommonLocators } from '@locators/common-locators';
 
-/** RegisterLocators class extends CommonLocators and defines specific locators for the registration page of the e-commerce application.
- * @param page - The Playwright Page object used to interact with the web page.
- * This class includes locators for input fields such as first name, last name, email, telephone, password, confirm password, and the continue button.
- * It serves as a centralized location for managing all locators related to the registration page, allowing for easier maintenance and readability of the test code.
+/**
+ * Class representing register locators
  */
 export class RegisterLocators extends CommonLocators {
+  constructor(page: Page) {
+    super(page);
+    this.locatorInitialization();
+  }
+
   inputFirstName!: Locator;
   inputLastName!: Locator;
   inputEmail!: Locator;
@@ -18,12 +21,6 @@ export class RegisterLocators extends CommonLocators {
   radioNewsletterNo!: Locator;
   chkPrivacyPolicy!: Locator;
   btnSuccessContinue!: Locator;
-
-  constructor(page: Page) {
-    super(page);
-    this.locatorInitialization();
-  }
-
   lblSuccessMessage!: Locator;
   lblSuccessPageContent!: Locator;
 
@@ -48,7 +45,6 @@ export class RegisterLocators extends CommonLocators {
     this.radioNewsletterNo = this.page.locator('input[name="newsletter"][value="0"]');
     this.chkPrivacyPolicy = this.page.locator('label[for="input-agree"]');
     this.btnContinue = this.page.locator('input[value="Continue"]');
-
     this.lblSuccessMessage = this.page.locator('#content h1');
     this.lblSuccessPageContent = this.page.locator('#content');
     this.lblErrorFirstName = this.page.locator('#input-firstname + .text-danger');
