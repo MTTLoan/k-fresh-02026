@@ -16,7 +16,7 @@ test.describe('Register Tests', () => {
     user = generateUserProfileData();
   });
 
-  test('TC-001: Register with valid data - success @smoke @regression', async ({ registerPage }) => {
+  test('TC-001: Register with valid data - success', { tag: '@smoke @regression' }, async ({ registerPage }) => {
     await registerPage.fillRegistrationForm(user);
     await registerPage.unSelectNewsletter();
     await registerPage.clickAgreeTermsCheckbox();
