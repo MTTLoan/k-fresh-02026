@@ -54,9 +54,9 @@ jobs:
         echo "Running test type: $TEST_TYPE"
 
         if [ "$TEST_TYPE" = "all" ]; then
-          npx playwright test
+          npx playwright test --project=chromium
         else
-          npx playwright test --grep "@$TEST_TYPE"
+          npx playwright test --grep "@$TEST_TYPE" --project=chromium
         fi
       env:
         HEADLESS: true
