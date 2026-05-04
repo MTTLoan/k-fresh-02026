@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
-import { step } from '@utilities/logging';
-import { Utility } from '@utilities/utility';
+import { step } from './logging';
+import { Utility } from './utility';
 
 /**
  * Assertion helper methods used across API and UI tests.

@@ -1,6 +1,10 @@
-import { expect, Locator, type APIResponse, type Page, type Download } from '@playwright/test';
-import { step } from '@utilities/logging';
+import { expect, Locator, type APIResponse, type Page } from '@playwright/test';
+import type { Download } from '@playwright/test';
+import { step } from '../utilities/logging';
 
+/**
+ * Shared assertion helpers for page objects (visibility, text, value, count, API response, downloads).
+ */
 export class AssertHelper {
 
     /**
@@ -397,4 +401,5 @@ export class AssertHelper {
     assertTobeTruthy(actual: any, message?: string): void {
         expect.soft(actual, message ?? `Expected ${actual} to be truthy`).toBeTruthy();
     }
+
 }

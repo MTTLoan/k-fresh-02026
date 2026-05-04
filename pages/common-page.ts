@@ -1,20 +1,19 @@
 import { expect, Locator, Page, type Response } from '@playwright/test';
-import { CommonLocators } from '@locators/common-locators';
-import { step } from '@utilities/logging';
-import { Logger } from '@utilities/logger';
-import { Constants } from '@utilities/constants';
-import { Utility } from '@utilities/utility';
-
+import { CommonLocators } from '../locators/common-locators';
+import { step } from '../utilities/logging';
+import { Logger } from '../utilities/logger';
+import { Constants } from '../utilities/constants';
+import { Utility } from '../utilities/utility';
 export class CommonPage extends CommonLocators {
 
     constructor(page: Page) {
         super(page);
     }
 
-    /**
-    * Go to the URL
-    * @param url
-    */
+     /**
+     * Go to the URL
+     * @param url
+     */
     @step('Go to the URL')
     async goto(url: string, isWait: boolean = true): Promise<void> {
         await this.page.goto(url);
@@ -32,6 +31,7 @@ export class CommonPage extends CommonLocators {
         await this.click(this.btnContinue);
         await this.waitForPageLoad();
     }
+
     /**
      * Click on Locator
      * @param locator
@@ -797,13 +797,13 @@ export class CommonPage extends CommonLocators {
             await this.page.waitForLoadState('domcontentloaded');
         }
     }
-    
+
     /**
-    * Get Current URL
-    * @returns
-    */
+     * Get Current URL
+     * @returns
+     */
     @step('Get Current URL')
-    async getCurrentUrl(): Promise<string> {
+    getCurrentUrl(): string {
         return this.page.url();
     }
 }

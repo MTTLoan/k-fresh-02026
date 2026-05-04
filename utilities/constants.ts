@@ -40,7 +40,6 @@ export class Constants {
   static readonly LOGIN_USERNAME = process.env.LOGIN_USERNAME ?? 'tomsmith';
   static readonly SUCCESS_MESSAGE = 'You logged into a secure area!';
   static readonly LOGIN_PASSWORD = process.env.LOGIN_PASSWORD ?? '';
-
   static readonly USERS_JSON_FILE = './data/users.json';
   static readonly PRODUCT_JSON_FILE = './data/product.json';
   static readonly LOAD_STATE = {
@@ -48,4 +47,5 @@ export class Constants {
     DOM_CONTENT_LOADED: 'domcontentloaded',
     LOAD: 'load',
   } as const;
+
 }

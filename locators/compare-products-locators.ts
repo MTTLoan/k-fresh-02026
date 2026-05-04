@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test';
-import { CommonLocators } from '@locators/common-locators';
+import { CommonLocators } from './common-locators';
 
 export class CompareProductsLocators extends CommonLocators {
 
@@ -7,6 +7,7 @@ export class CompareProductsLocators extends CommonLocators {
     super(page);
     this.locatorInitialization();
   }
+
   table!: Locator;
   btnRemove!: (id?: string) => Locator;
   btnAddToCart!: Locator;

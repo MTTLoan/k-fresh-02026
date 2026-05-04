@@ -1,9 +1,12 @@
-import type { UserProfile, User } from '@models/user';
-import { Constants } from '@utilities/constants';
-import type { ENV } from '@models/index';
-import { readJsonFile } from '@utilities/jsonHandling';
 import { faker } from '@faker-js/faker';
-import { Address, DefaultAddressOption, } from '@models/address';
+import {
+  UserProfile,
+  User,
+} from '../models/user';
+import { Address, DefaultAddressOption, } from '../models/address';
+import { Constants } from '../utilities/constants';
+import { ENV } from '../models';
+import { readJsonFile } from '../utilities/jsonHandling';
 
 const COUNTRY_REGIONS: Record<string, string[]> = {
   'United States': ['California', 'Florida', 'Texas', 'New York'],

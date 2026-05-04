@@ -30,5 +30,6 @@ test.describe('Wish List Tests', () => {
   test('TC-WL-005: link to product detail', async ({ wishlistPage }) => {
     await wishlistPage.verifyWishlistNotEmpty();
     await wishlistPage.openFirstProductAndVerifyDetail();
+
   });
 });

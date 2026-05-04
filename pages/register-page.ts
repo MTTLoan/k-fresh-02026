@@ -1,10 +1,10 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { CommonPage } from '@pages/common-page';
-import { step } from '@utilities/logging';
-import { RegisterLocators } from '@locators/register-locators';
-import { UserProfile } from '@models/user';
-import { Assertions } from '@utilities/assertions';
-import { Messages } from '@data/messages.data';
+import { CommonPage } from './common-page';
+import { step } from '../utilities/logging';
+import { RegisterLocators } from '../locators/register-locators';
+import { UserProfile } from '../models/user';
+import { Assertions } from '../utilities/assertions';
+import { Messages } from '../data/messages.data';
 import { Constants } from '@utilities/constants';
 
 export class RegisterPage extends RegisterLocators {

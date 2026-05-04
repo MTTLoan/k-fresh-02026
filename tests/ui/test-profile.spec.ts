@@ -81,12 +81,14 @@ test.describe('TC005 - Change Password', () => {
       telephone: registerData.telephone,
       password: registerData.password,
     };
+
     await commonPage.goto(Constants.REGISTER_URL);
     await registerPage.fillRegistrationForm(userProfile);
     await registerPage.clickAgreeTermsCheckbox();
     await registerPage.submitRegistrationForm();
     await profilePage.verifyRegistrationResultPage();
     await profilePage.continueFromRegistrationSuccessIfNeeded();
+
     await profilePage.verifyMyAccountPage();
     await profilePage.openChangePasswordPage();
     await profilePage.changePassword(changedPassword);

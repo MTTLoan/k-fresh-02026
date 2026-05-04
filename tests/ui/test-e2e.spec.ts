@@ -8,4 +8,5 @@ test.describe('E2E Tests', () => {
     await commonPage.goto(Constants.LOGIN_URL);
     await loginPage.login(user);
   });
+
 });

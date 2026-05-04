@@ -1,11 +1,11 @@
-import { test, expect, Page } from '@playwright/test';
-import { Constants } from '@utilities/constants';
-import { CommonPage } from '@pages/common-page';
+import { expect, Page, test } from '@playwright/test';
+import { CommonPage } from './common-page';
 import { step } from '@utilities/logging';
 import { ProductLocators } from '@locators/product-locators';
 import { Product } from '@models/product';
-import { AssertHelper } from '@pages/assert-helper-page';
-import { ActionType } from '@models/action-type';
+import { AssertHelper } from './assert-helper-page';
+import { ActionType } from '../models/action-type';
+import { Constants } from '@utilities/constants';
 
 export class ProductPage extends ProductLocators {
   commonPage: CommonPage;
@@ -40,7 +40,7 @@ export class ProductPage extends ProductLocators {
   @step('Click Add to Compare Button')
   async clickAddToCompareButton(productName: string): Promise<void> {
     await this.clickProductLink(productName);
-    await this.commonPage.click(this.btnCompare(productName));
+    await this.commonPage.click(this.btnCompare);
   }
 
   /**
@@ -251,7 +251,7 @@ export class ProductPage extends ProductLocators {
         btnAction = this.btnAddWishlist(productName);
         break;
       case ActionType.COMPARE:
-        btnAction = this.btnCompare(productName);
+        btnAction = this.btnCompareByProductName(productName);
         break;
       case ActionType.QUICK_VIEW:
         btnAction = this.btnQuickView(productName);
@@ -294,6 +294,15 @@ export class ProductPage extends ProductLocators {
   async verifyAddToCartSuccessMessage(expectedMessage: string): Promise<void> {
     await this.assertHelper.assertElementContainsText(this.divSuccessAlert, expectedMessage);
   }
+
+  /**
+   * Clicks the view cart link in the success alert to navigate to the cart page
+   */
+  @step('Compare Product Details')
+  async compareProductDetails(
+    actualProduct: Product,
+    expectedProduct: Product,
+  ): Promise<void> { }
 
   @step('Clicking the view cart link in the success alert to navigate to the cart page')
   async clickViewCartLink(): Promise<void> {

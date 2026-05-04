@@ -1,4 +1,4 @@
-import { Generate } from '@utilities/gen';
+import { Generate } from './gen';
 import { randomInt } from 'node:crypto';
 
 /**
