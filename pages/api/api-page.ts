@@ -1,11 +1,11 @@
 import { APIRequestContext, APIResponse, request } from '@playwright/test';
 import { uuidv7 } from 'uuidv7';
 import * as https from 'https';
-import { Constants } from '../../utilities/constants';
-import { step } from '../../utilities/logging';
+import { Constants } from '@utilities/constants';
+import { step } from '@utilities/logging';
 import fs from 'fs';
 import * as path from 'path';
-import { Logger } from '../../utilities/logger';
+import { Logger } from '@utilities/logger';
 
 /** Default login path for open-console. */
 export const LOGIN_PATH = '/api/v1/client/login';

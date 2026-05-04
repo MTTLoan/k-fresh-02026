@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
-import { CommonPage } from './common-page';
-import { MyOrdersLocators } from '../locators/my-orders-locators';
+import { CommonPage } from '@pages/common-page';
+import { MyOrdersLocators } from '@locators/my-orders-locators';
 
 export class MyOrdersPage extends MyOrdersLocators {
 

@@ -1,8 +1,8 @@
 import { expect, Page } from '@playwright/test';
-import { step } from '../utilities/logging';
-import { CompareProductsLocators } from '../locators/compare-products-locators';
-import { Product } from '../models/product';
-import { CommonPage } from './common-page';
+import { CommonPage } from '@pages/common-page';
+import { step } from '@utilities/logging';
+import { CompareProductsLocators } from '@locators/compare-products-locators';
+import { Product } from '@models/product';
 
 export class CompareProductsPage extends CompareProductsLocators {
   commonPage: CommonPage;

@@ -1,12 +1,12 @@
 import { Page } from '@playwright/test';
-import { ProfileLocators } from '../locators/profile-locators';
-import { CommonPage } from './common-page';
-import { UserProfile } from '../models/user';
-import { Address } from '../models/address';
-import { step } from '../utilities/logging';
-import { Messages } from '../data/messages.data';
-import { AssertHelper } from './assert-helper-page';
-import { Assertions } from '../utilities/assertions';
+import { ProfileLocators } from '@locators/profile-locators';
+import { CommonPage } from '@pages/common-page';
+import { UserProfile } from '@models/user';
+import { Address } from '@models/address';
+import { step } from '@utilities/logging';
+import { Messages } from '@data/messages.data';
+import { AssertHelper } from '@pages/assert-helper-page';
+import { Assertions } from '@utilities/assertions';
 
 /**
  * Page object for user profile actions in My Account area.

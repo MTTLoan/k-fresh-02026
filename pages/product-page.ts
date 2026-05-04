@@ -1,10 +1,10 @@
 import { expect, Page, test } from '@playwright/test';
-import { CommonPage } from './common-page';
+import { CommonPage } from '@pages/common-page';
 import { step } from '@utilities/logging';
 import { ProductLocators } from '@locators/product-locators';
 import { Product } from '@models/product';
-import { AssertHelper } from './assert-helper-page';
-import { ActionType } from '../models/action-type';
+import { AssertHelper } from '@pages/assert-helper-page';
+import { ActionType } from '@models/action-type';
 import { Constants } from '@utilities/constants';
 
 export class ProductPage extends ProductLocators {

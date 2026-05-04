@@ -1,9 +1,10 @@
 import { expect, Locator, Page, type Response } from '@playwright/test';
-import { CommonLocators } from '../locators/common-locators';
-import { step } from '../utilities/logging';
-import { Logger } from '../utilities/logger';
-import { Constants } from '../utilities/constants';
-import { Utility } from '../utilities/utility';
+import { CommonLocators } from '@locators/common-locators';
+import { step } from '@utilities/logging';
+import { Logger } from '@utilities/logger';
+import { Constants } from '@utilities/constants';
+import { Utility } from '@utilities/utility';
+
 export class CommonPage extends CommonLocators {
 
     constructor(page: Page) {

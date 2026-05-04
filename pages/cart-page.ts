@@ -1,11 +1,11 @@
 import { Page } from '@playwright/test';
-import { CommonPage } from './common-page';
-import { step } from '../utilities/logging';
-import { CartLocators } from '../locators/cart-locators';
-import { Product } from '../models/product';
-import { Currency } from '../utilities/currency';
-import { AssertHelper } from './assert-helper-page';
-import { Assertions } from '../utilities/assertions';
+import { CommonPage } from '@pages/common-page';
+import { step } from '@utilities/logging';
+import { CartLocators } from '@locators/cart-locators';
+import { Product } from '@models/product';
+import { Currency } from '@utilities/currency';
+import { AssertHelper } from '@pages/assert-helper-page';
+import { Assertions } from '@utilities/assertions';
 
 export class CartPage extends CartLocators {
 
