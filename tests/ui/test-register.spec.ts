@@ -6,7 +6,6 @@ import { UserProfile } from '@models/user';
 import { generateUserProfileData } from '@data/user-data';
 import { AssertHelper } from '@pages/assert-helper-page';
 
-
 let user: UserProfile;
 const assertHelper = new AssertHelper();
 
@@ -46,7 +45,8 @@ test.describe('Register Tests', () => {
     await registerPage.fillRegistrationForm(user);
     await registerPage.clickAgreeTermsCheckbox();
     await registerPage.submitRegistrationForm();
-    // Verify registration did not succeed
+
+    // Verify registration did not succeed (still on register page or shows error)
     Assertions.assertEqual(await commonPage.getCurrentUrl(), Constants.REGISTER_URL);
     const emailValue = await registerPage.inputEmail.inputValue();
     const validationMessage = await registerPage.getInputValidationMessage(registerPage.inputEmail);
